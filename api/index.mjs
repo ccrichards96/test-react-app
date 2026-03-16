@@ -1,4 +1,4 @@
-dotenv.config();
+dotenv.config({path:".env"});
 
 import express, { json } from "express";
 import cors from "cors";
@@ -39,6 +39,7 @@ app.get('/debug-env', (req, res) => {
 
 
 app.get("/airtable", async (req, res) => {
+  console.log(Object.entries(process.env))
   const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_ID}/users`;
 
   try {
@@ -66,6 +67,10 @@ app.get("/airtable", async (req, res) => {
   }
 });
 app.post("/airtable", async (req, res) => {
+
+  console.log(Object.entries(process.env))
+
+
   const { userId, formValue } = req.body;
   const key = Object.keys(formValue)[0];
   const value = Object.values(formValue)[0];
