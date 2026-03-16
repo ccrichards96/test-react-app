@@ -1,3 +1,5 @@
+dotenv.config();
+
 import express, { json } from "express";
 import cors from "cors";
 import fetch from "node-fetch";
@@ -5,9 +7,7 @@ import dotenv from "dotenv";
 import Airtable from "airtable";
 
 const app = express();
-const port = process.env.PORT || 3000;
-
-dotenv.config({ path: ".env.backend" });
+const port = process.env.PORT || 5252;
 const AIRTABLE_KEY = process.env.AIRTABLE_KEY;
 const AIRTABLE_ID = process.env.AIRTABLE_ID;
 const CAPTCHA_SECRET = process.env.CAPTCHA_SECRET;
