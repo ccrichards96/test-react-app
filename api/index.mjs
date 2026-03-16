@@ -39,7 +39,7 @@ app.get('/debug-env', (req, res) => {
 
 
 app.get("/airtable", async (req, res) => {
-  const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_ID}/users`;
+  const airtableUrl = `https://api.airtable.com/v0/${process.env.AIRTABLE_ID}/users`;
 
   try {
     const response = await fetch(airtableUrl, {
@@ -106,3 +106,5 @@ app.post("/verify-recaptcha", async (req, res) => {
 app.listen(port, () =>
   console.log(`Server is running on http://localhost:${port}`)
 );
+
+export default app;
