@@ -12,6 +12,7 @@ const AIRTABLE_KEY = process.env.AIRTABLE_KEY;
 const AIRTABLE_ID = process.env.AIRTABLE_ID;
 const CAPTCHA_SECRET = process.env.CAPTCHA_SECRET;
 
+
 const edgyBase_backend = new Airtable({ apiKey: AIRTABLE_KEY }).base(
   AIRTABLE_ID
 );
@@ -27,6 +28,13 @@ app.use(json());
 
 app.get("/", (req, res) => {
   res.send("Server Deployed 🥳");
+});
+
+app.get('/debug-env', (req, res) => {
+  res.json({
+    hasAirtableId: !!process.env.AIRTABLE_ID,
+    allKeys: Object.keys(process.env).filter(k => !k.includes('SECRET') && !k.includes('PASSWORD')) 
+  });
 });
 
 app.get("/airtable", async (req, res) => {
