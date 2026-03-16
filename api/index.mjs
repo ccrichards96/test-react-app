@@ -37,6 +37,7 @@ app.get('/debug-env', (req, res) => {
   });
 });
 
+
 app.get("/airtable", async (req, res) => {
   const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_ID}/users`;
 
