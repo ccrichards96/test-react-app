@@ -61,7 +61,11 @@ export default function App() {
 
   const retrieveDatabase = async (email, password = undefined) => {
     try {
-      const response = await fetch(import.meta.env.VITE_AIRTABLE_SERVER_URL);
+      const response = await fetch(import.meta.env.VITE_AIRTABLE_SERVER_URL, {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_KEY}`,
+        },
+      });
       const data = await response.json();
 
       if (data) {
@@ -144,6 +148,7 @@ export default function App() {
       const response = await fetch(import.meta.env.VITE_AIRTABLE_SERVER_URL, {
         method: "POST",
         headers: {
+          "Authorization": `Bearer ${import.meta.env.VITE_AIRTABLE_KEY}`,
           "content-type": "application/json",
         },
         body: JSON.stringify({ userId, formValue }),
