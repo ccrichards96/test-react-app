@@ -66,6 +66,7 @@ export default function App() {
           Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_KEY}`,
         },
       });
+
       const data = await response.json();
 
       if (data) {
